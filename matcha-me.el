@@ -225,12 +225,11 @@ https://emacs.stackexchange.com/questions/24459/revert-all-open-buffers-and-igno
 (define-transient-command matcha-me-space ()
   "Space"
   [["Find"
-    ("f" "File" matcha-me-find-file-dwim)
-    ("b" "Buffer" matcha-me-buffers-dwim)
-    ("r" "Recent" matcha-me-recentf-dwim)
-    ("n" "Sidebar" dired-sidebar-toggle-sidebar)
-    ("SPC" "In Project" j-search)
-    ("F" "Files" matcha-me-files)]
+    ("f" "File" helm-find-files)
+    ("b" "Buffer" helm-mini)
+    ("r" "Bookmars" bookmark-jump)
+    ("n" "NeoTree" neotree)
+    ("SPC" "Jump" avy-goto-char-timer)]
    ["Manage"
     ("w" "Window..." matcha-me-window)
     ("g" "Git..." matcha-magit)
@@ -238,18 +237,19 @@ https://emacs.stackexchange.com/questions/24459/revert-all-open-buffers-and-igno
     ("p" "Project..." matcha-projectile)
     ("y" "System..." matcha-me-system)]
    ["Do"
-    ("s" "Search..." matcha-me-search)
-    ("S" "Save all Buffers" matcha-me-save-all-buffers)
+    ("s" "Search" helm-swoop)
+    ("i" "Save buffer" save-buffer)
     ("R" "Refactor..." matcha-run-refactor-command)
-    ("v" "Edit Config" matcha-me-find-init)
-    ("o" "Org..." matcha-org-space)]
+    ("a" "Agenda" org-agenda)]
    ["Mode"
     ("m" "Mode" matcha-run-mode-command)
     ("d" "Debug" matcha-run-debug-command)
-    ("e" "Eval" matcha-run-eval-command)
+    ("v" "Eval" matcha-run-eval-command)
     ("t" "Test" matcha-run-test-command)
     ("=" "Format" matcha-run-format-command)]]
   [:hide (lambda () t)
+         ("c" org-capture)
+         ("e" er/expand-region)
          ("-" split-window-below)
          ("|" split-window-right)
          ("\\" split-window-right)
@@ -259,12 +259,14 @@ https://emacs.stackexchange.com/questions/24459/revert-all-open-buffers-and-igno
          ("j" evil-window-down)
          ("." evil-next-buffer)
          ("," evil-prev-buffer)
-         (";" counsel-M-x)
+         (";" helm-M-x)
          (":" eval-expression)
          ("'" eval-expression)
          ("<backspace>" delete-window)
          ("DEL" delete-window) ;; For terminals.
-         ("x" kill-buffer)]
+         ("q" delete-other-windows)
+         ("x" kill-this-buffer)
+         ("/" matcha-evil-mc/body)]
   (interactive)
   (let ((transient-show-popup -.2))
     (transient-setup 'matcha-me-space)))
@@ -285,23 +287,19 @@ https://emacs.stackexchange.com/questions/24459/revert-all-open-buffers-and-igno
     ("l" "List" bookmark-bmenu-list)
     ("s" "Save" bookmark-save)]])
 
+(defun open-finder ()
+  "Open finder in current directory."
+  (interactive)
+  (shell-command "open ."))
+
 (define-transient-command matcha-me-system ()
   "System"
   [["System"
-    ("f" "Finder" j-explorer-finder)
-    ("t" "Open Terminal" j-open-terminal)
-    ("i" "IRC" j-start-irc)
-    ("m" "Email" j-notmuch)
-    ("w" "Passwords" pass)
-    ("W" "Copy Password" password-store-copy)
-    ("b" "Bookmarks..." matcha-me-bookmark)]
-   ["Shell"
-    ("y" "Terminal" j-open-shell)
-    ("e" "Eshell" eshell)]
+    ("f" "Finder" open-finder)
+    ("t" "Open Terminal" my/open-iterm-here)]
    ["Processes"
     ("p" "Profiler..." matcha-me-profiler)
-    ("L" "List Processes" list-processes)
-    ("P" "Prodigy" prodigy)]])
+    ("L" "List Processes" list-processes)]])
 
 (define-transient-command matcha-me-search ()
   "Search"
@@ -345,9 +343,7 @@ https://emacs.stackexchange.com/questions/24459/revert-all-open-buffers-and-igno
     ("o" "Other Frame" other-frame)]
    ["Window"
     ("=" "Balance" balance-windows)
-    ("r" "Resize Windows" j-resize-window)
-    ("s" "Toggle Window Split" toggle-window-split)
-    ("t" "Rotate Windows" rotate-windows)]
+    ("t" "Rotate Windows" evil-window-rotate-downwards)]
    ["Resize"
     ("<right>" "->" shrink-window-horizontally)
     ("<left>" "<-" enlarge-window-horizontally)
