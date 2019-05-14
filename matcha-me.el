@@ -262,9 +262,6 @@ https://emacs.stackexchange.com/questions/24459/revert-all-open-buffers-and-igno
          (";" helm-M-x)
          (":" eval-expression)
          ("'" eval-expression)
-         ("<backspace>" delete-window)
-         ("DEL" delete-window) ;; For terminals.
-         ("q" delete-other-windows)
          ("x" kill-this-buffer)
          ("/" matcha-evil-mc/body)]
   (interactive)
@@ -325,32 +322,34 @@ https://emacs.stackexchange.com/questions/24459/revert-all-open-buffers-and-igno
   "Window"
   [["Narrow/Widen"
     ("n" "Narrow" narrow-to-region)
-    ("w" "Widen" widen)
+    ("W" "Widen" widen)
     ("ND" "Narrow to Defun" narrow-to-defun)
     ("NP" "Narrow to Page" narrow-to-page)]
    ["Workspace"
     ("j" "New" eyebrowse-create-window-config)
     ("l" "Next" eyebrowse-next-window-config)
     ("h" "Previous" eyebrowse-prev-window-config)
-    ("x" "Close" eyebrowse-close-window-config)]
+    ("k" "Close" eyebrowse-close-window-config)]
    ["Text"
-    ("+" "Increase" text-scale-increase)
-    ("_" "Decrease" text-scale-decrease)]]
+    ("+" "Increase" text-scale-increase :transient t)
+    ("_" "Decrease" text-scale-decrease :transient t)]]
   [["Frame"
     ("m" "Maximize" toggle-frame-maximized)
-    ("F" "Toggle Fullscreen" toggle-frame-fullscreen)
+    ("f" "Toggle Fullscreen" toggle-frame-fullscreen)
     ("0" "Delete Frame" delete-frame)
     ("1" "Delete other Frames" delete-other-frames)
     ("2" "Make Frame" make-frame-command)
     ("o" "Other Frame" other-frame)]
    ["Window"
     ("=" "Balance" balance-windows)
-    ("t" "Rotate Windows" evil-window-rotate-downwards)]
+    ("t" "Rotate Windows" evil-window-rotate-downwards)
+    ("x" "Delete Window" delete-window)
+    ("w" "Delete Others" delete-other-windows)]
    ["Resize"
-    ("<right>" "->" shrink-window-horizontally)
-    ("<left>" "<-" enlarge-window-horizontally)
-    ("<down>" "Down" shrink-window)
-    ("<up>" "Up" enlarge-window)]]
+    ("<right>" "->" shrink-window-horizontally :transient t)
+    ("<left>" "<-" enlarge-window-horizontally :transient t)
+    ("<down>" "Down" shrink-window :transient t)
+    ("<up>" "Up" enlarge-window :transient t)]]
   [:hide (lambda () t)
          ("-" split-window-below)
          ("|" split-window-right)
