@@ -328,9 +328,11 @@ https://emacs.stackexchange.com/questions/24459/revert-all-open-buffers-and-igno
     ("w" "Widen" widen)
     ("ND" "Narrow to Defun" narrow-to-defun)
     ("NP" "Narrow to Page" narrow-to-page)]
-   ["Layout"
-    ("." "Redo" winner-redo)
-    ("," "Undo" winner-undo)]
+   ["Workspace"
+    ("j" "New" eyebrowse-create-window-config)
+    ("l" "Next" eyebrowse-next-window-config)
+    ("h" "Previous" eyebrowse-prev-window-config)
+    ("x" "Close" eyebrowse-close-window-config)]
    ["Text"
     ("+" "Increase" text-scale-increase)
     ("_" "Decrease" text-scale-decrease)]]
