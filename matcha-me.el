@@ -259,9 +259,8 @@ https://emacs.stackexchange.com/questions/24459/revert-all-open-buffers-and-igno
          ("j" evil-window-down)
          ("." evil-next-buffer)
          ("," evil-prev-buffer)
-         (";" helm-M-x)
-         (":" eval-expression)
-         ("'" eval-expression)
+         (";" eval-expression)
+         ("'" shell-command)
          ("x" kill-this-buffer)
          ("/" matcha-evil-mc/body)]
   (interactive)
