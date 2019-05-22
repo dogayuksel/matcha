@@ -236,7 +236,7 @@ https://emacs.stackexchange.com/questions/24459/revert-all-open-buffers-and-igno
     ("p" "Project..." matcha-projectile)
     ("y" "System..." matcha-me-system)]
    ["Do"
-    ("s" "Search" helm-swoop)
+    ("s" "Search..." matcha-me-search)
     ("i" "Save buffer" save-buffer)
     ("R" "Refactor..." matcha-run-refactor-command)
     ("a" "Agenda" org-agenda)]
@@ -298,23 +298,19 @@ https://emacs.stackexchange.com/questions/24459/revert-all-open-buffers-and-igno
 
 (define-transient-command matcha-me-search ()
   "Search"
-  [["Counsel"
-    ("r" "Ripgrep" counsel-rg)
-    ("R" "Ripgrep at Point" j-counsel-rg)
-    ("s" "Swiper" swiper)
-    ("S" "Swiper All" swiper-all)
-    ("f" "Find File" counsel-find-file)
-    ("i" "Git" counsel-git)
-    ("g" "Google" counsel-google)]
+  [["Swoop"
+    ("s" "Swoop" helm-swoop)
+    ("a" "Without Pre-input" helm-swoop-without-pre-input)
+    ("c" "Choose Buffers" helm-multi-swoop)
+    ("p" "Project Buffers" helm-multi-swoop-projectile)
+    ("m" "Mode Buffers" helm-multi-swoop-current-mode)]
    ["Occur"
     ("o" "Occur" occur)
     ("O" "Multi Occur" multi-occur)
-    ("m" "Occur in Same Modes" j-multi-occur-in-this-mode)
-    ("M" "Occur in Matching Buffers" j-multi-occur-in-this-mode)
     ("P" "Occur in Project" projectile-multi-occur)]
-   ["Other"
-    ("a" "Rgrep" rgrep)
-    ("d" "Deadgrep" deadgrep)]])
+   ["Silver"
+    ("g" "Project Root" helm-do-ag-project-root)
+    ("h" "Choose Root" helm-do-ag)]])
 
 (define-transient-command matcha-me-window ()
   "Window"
