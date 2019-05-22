@@ -291,7 +291,8 @@ https://emacs.stackexchange.com/questions/24459/revert-all-open-buffers-and-igno
   "System"
   [["System"
     ("f" "Finder" open-finder)
-    ("t" "Open Terminal" my/open-iterm-here)]
+    ("t" "Open iTerm" my/open-iterm-here)
+    ("s" "Send to iTerm" my/send-line-to-iterm)]
    ["Processes"
     ("p" "Profiler..." matcha-me-profiler)
     ("L" "List Processes" list-processes)]])
