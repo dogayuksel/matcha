@@ -58,7 +58,7 @@
             (untabify (point-min) (point-max)))
           (message "Indented selected region."))
       (progn
-        (indent-buffer)
+        (indent-region (point-min) (point-max) nil)
         (message "Indented buffer.")))))
 
 (defmacro matcha-make (&rest commands)
