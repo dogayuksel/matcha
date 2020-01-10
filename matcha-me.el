@@ -261,7 +261,7 @@ https://emacs.stackexchange.com/questions/24459/revert-all-open-buffers-and-igno
          (";" eval-expression)
          ("'" shell-command)
          ("x" kill-this-buffer)
-         ("/" matcha-evil-mc/body)]
+         ("/" evil-mc-hydra/body)]
   (interactive)
   (let ((transient-show-popup -.2))
     (transient-setup 'matcha-me-space)))
