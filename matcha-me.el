@@ -310,8 +310,10 @@ https://emacs.stackexchange.com/questions/24459/revert-all-open-buffers-and-igno
     ("O" "Multi Occur" multi-occur)
     ("P" "Occur in Project" projectile-multi-occur)]
    ["Silver"
-    ("g" "Project Root" helm-do-ag-project-root)
-    ("h" "Choose Root" helm-do-ag)]])
+    ("g" "Live Project Root" helm-do-ag-project-root)
+    ("h" "Live Choose Root" helm-do-ag)
+    ("t" "Once Project Root" helm-ag)
+    ("y" "Once Choose Root" helm-ag-project-root)]])
 
 (define-transient-command matcha-me-window ()
   "Window"
