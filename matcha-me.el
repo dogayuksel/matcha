@@ -309,7 +309,7 @@ https://emacs.stackexchange.com/questions/24459/revert-all-open-buffers-and-igno
     ("o" "Occur" occur)
     ("O" "Multi Occur" multi-occur)
     ("P" "Occur in Project" projectile-multi-occur)]
-   ["Silver"
+   ["Ripgrep"
     ("g" "Live Project Root" helm-do-ag-project-root)
     ("h" "Live Choose Root" helm-do-ag)
     ("t" "Once Project Root" helm-ag)

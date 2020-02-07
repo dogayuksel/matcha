@@ -67,6 +67,7 @@
     ("S" "Replace" projectile-replace)
     ("U" "Run Tests" projectile-test-project)
     ("m" "Compile Project" projectile-compile-project)
+    ("n" "Run Project" projectile-run-project)
     ("c" "Run Async Shell Command" projectile-run-async-shell-command-in-root)
     ("C" "Run Command" projectile-run-command-in-root)]]
   [["Modes"
