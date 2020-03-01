@@ -225,27 +225,30 @@ https://emacs.stackexchange.com/questions/24459/revert-all-open-buffers-and-igno
 (define-transient-command matcha-me-space ()
   "Space"
   [["Find"
-    ("f" "File" helm-find-files)
-    ("b" "Buffer" helm-mini)
-    ("r" "Bookmars" bookmark-jump)
+    ("f" "File" counsel-find-file)
+    ("b" "Quick File" counsel-buffer-or-recentf)
+    ("B" "Buffers" switch-to-buffer)
+    ("r" "Bookmarks" bookmark-jump)
     ("n" "NeoTree" neotree)
     ("SPC" "Jump" avy-goto-char-timer)]
    ["Manage"
     ("w" "Window..." matcha-me-window)
     ("g" "Git..." matcha-magit)
     ("p" "Project..." matcha-projectile)
-    ("y" "System..." matcha-me-system)]
+    ("y" "System..." matcha-me-system)
+    ("R" "Bookmarks..." matcha-me-bookmark)]
    ["Do"
     ("s" "Search..." matcha-me-search)
     ("i" "Save buffer" save-buffer)
-    ("R" "Refactor..." matcha-run-refactor-command)
-    ("a" "Agenda" org-agenda)]
+    ("S" "Save all Buffers" matcha-me-save-all-buffers)
+    ("=" "Format" matcha-run-format-command)
+    ("o" "Org..." matcha-org-space)]
    ["Mode"
     ("m" "Mode" matcha-run-mode-command)
     ("d" "Debug" matcha-run-debug-command)
     ("v" "Eval" matcha-run-eval-command)
     ("t" "Test" matcha-run-test-command)
-    ("=" "Format" matcha-run-format-command)]]
+    ("a" "Refactor..." matcha-run-refactor-command)]]
   [:hide (lambda () t)
          ("c" org-capture)
          ("e" er/expand-region)
@@ -299,21 +302,17 @@ https://emacs.stackexchange.com/questions/24459/revert-all-open-buffers-and-igno
 
 (define-transient-command matcha-me-search ()
   "Search"
-  [["Swoop"
-    ("s" "Swoop" helm-swoop)
-    ("a" "Without Pre-input" helm-swoop-without-pre-input)
-    ("c" "Choose Buffers" helm-multi-swoop)
-    ("p" "Project Buffers" helm-multi-swoop-projectile)
-    ("m" "Mode Buffers" helm-multi-swoop-current-mode)]
+  [["Swiper"
+    ("s" "Swiper" swiper-thing-at-point)
+    ("a" "Without Pre-input" swiper)
+    ("S" "Swiper All" swiper-all)]
    ["Occur"
     ("o" "Occur" occur)
     ("O" "Multi Occur" multi-occur)
     ("P" "Occur in Project" projectile-multi-occur)]
    ["Ripgrep"
-    ("g" "Live Project Root" helm-do-ag-project-root)
-    ("h" "Live Choose Root" helm-do-ag)
-    ("t" "Once Project Root" helm-ag)
-    ("y" "Once Choose Root" helm-ag-project-root)]])
+    ("r" "Do" counsel-rg)
+    ("g" "Set..." counsel-rg-transient)]])
 
 (define-transient-command matcha-me-window ()
   "Window"
