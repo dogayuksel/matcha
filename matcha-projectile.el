@@ -75,7 +75,7 @@
     ("h" "Dired" projectile-dired)
     ("i" "IBuffer" projectile-ibuffer)]
    ["Search"
-    ("a" "AG" projectile-ag)
+    ("a" "Ripgrep" projectile-ripgrep)
     ("A" "Grep" projectile-grep)
     ("s" "Multi Occur" projectile-multi-occur)
     ("t" "Find Tag" projectile-find-tag)
