@@ -226,8 +226,8 @@ https://emacs.stackexchange.com/questions/24459/revert-all-open-buffers-and-igno
   "Space"
   [["Find"
     ("f" "File" counsel-find-file)
-    ("b" "Quick File" counsel-buffer-or-recentf)
-    ("B" "Buffers" switch-to-buffer)
+    ("M-f" "Quick File" counsel-buffer-or-recentf)
+    ("b" "Buffers" switch-to-buffer)
     ("r" "Bookmarks" bookmark-jump)
     ("n" "NeoTree" neotree)
     ("SPC" "Jump" avy-goto-char-timer)]
