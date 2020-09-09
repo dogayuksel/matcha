@@ -252,6 +252,8 @@ https://emacs.stackexchange.com/questions/24459/revert-all-open-buffers-and-igno
   [:hide (lambda () t)
          ("c" org-capture)
          ("e" er/expand-region)
+         ("U" "Undo Tree" undo-tree-visualize)
+         ("B" "ibuffer" ibuffer)
          ("-" split-window-below)
          ("|" split-window-right)
          ("\\" split-window-right)
