@@ -6,8 +6,8 @@
 ;; Maintainer: James Nguyen <james@jojojames.com>
 ;; URL: https://github.com/jojojames/matcha
 ;; Version: 0.0.1
-;; Package-Requires: ((emacs "25.1"))
-;; Keywords: hydra, emacs
+;; Package-Requires: ((emacs "25.1") (transient "20200601"))
+;; Keywords: emacs, transient
 ;; HomePage: https://github.com/jojojames/matcha
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -65,24 +65,18 @@
   '(alchemist
     android-mode
     cc-mode ;; `java-mode'
-    cider
     dired
     eglot
-    erlang
-    geiser
     go-mode
     gud-lldb
     (js js2-mode rjsx-mode)
     json-mode
     log-edit
-    lua-mode
     (:file magit :autoloads matcha-magit)
-    meghanada
-    notmuch
     omnisharp
     org
-    (:file p4 :autoloads matcha-p4/body)
     pass
+    (:file project :autoloads matcha-project)
     (:file projectile :autoloads matcha-projectile)
     python
     restclient
